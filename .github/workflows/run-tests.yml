@@ -16,10 +16,7 @@ jobs:
         ./.ci/run-cmake-test.sh x86_64-darwin
     - name: Collect artifacts
       run: |
-        mkdir -p releases
-        mv build releases/
-        chmod -R +x releases/
-        tar -cvf all-artifacts.tar.bz2 releases/
+        tar -cvf all-artifacts.tar.bz2 .
     - name: Publish collected artifacts
       uses: actions/upload-artifact@v4
       with:
