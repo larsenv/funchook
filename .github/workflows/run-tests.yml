@@ -26,6 +26,17 @@ jobs:
     - name: x86_64 tests on macOS
       run: |
         ./.ci/run-cmake-test.sh x86_64-darwin
+    - name: Collect artifacts
+      run: |
+        mkdir -p releases
+        mv *     releases/
+        chmod -R +x releases/
+        tar -cvf all-artifacts.tar.bz2 releases/
+    - name: Publish collected artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: all-artifacts
+        path: all-artifacts.tar.bz2
 
   tests_on_m1_macos:
     name: Tests on macOS (M1)
