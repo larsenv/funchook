@@ -17,7 +17,7 @@ jobs:
     - name: Collect artifacts
       run: |
         mkdir -p releases
-        mv *     releases/
+        mv build releases/
         chmod -R +x releases/
         tar -cvf all-artifacts.tar.bz2 releases/
     - name: Publish collected artifacts
